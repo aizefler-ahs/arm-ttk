@@ -31,6 +31,7 @@ foreach ($id in $ids) {
     # these properties are exempt, since they are not actually resourceIds
     $exceptions = @(
         "appId",                       # Microsoft.Insights
+        # "keyVaultId",                  # Url to the KeyVault Secret containing the Ssl Certificate. If absolute Url containing version is provided, auto-update of ssl certificate will not work. This requires Api Management service to be configured with aka.ms/apimmsi. The secret should be of type application/x-pkcs12        
         "clientId",                    # Microsoft.BotService - common var name
         "DataTypeId",                  # Microsoft.OperationalInsights/workspaces/dataSources
         "defaultMenuItemId",           # Microsoft.Portal/dashboards - it's a messy resource
@@ -73,6 +74,10 @@ foreach ($id in $ids) {
     }
 
     if ( $id.ParentObject.type -match '^microsoft\.ApiManagement/service/backends$' ) {
+        continue
+    }
+
+    if ( $id.ParentObject.type -match '^microsoft\.ApiManagement/service$' ) {
         continue
     }
 

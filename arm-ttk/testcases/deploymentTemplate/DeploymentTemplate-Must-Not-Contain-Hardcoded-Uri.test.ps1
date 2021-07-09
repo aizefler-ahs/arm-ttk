@@ -16,7 +16,7 @@ $DisallowedHosts =
         "management.core.windows.net",
         "gallery.azure.com",
         "management.core.windows.net",
-        "management.azure.com",
+        # "management.azure.com", 
         "database.windows.net",
         "core.windows.net",
         "login.microsoftonline.com",
